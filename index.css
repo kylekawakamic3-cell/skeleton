@@ -38,7 +38,7 @@ body {
   width: 100%;
   height: 100vh;
   max-height: 100vh;
-  padding: 40px;
+  padding: 40px 40px 0 40px;
   display: flex;
   flex-direction: column;
 }
@@ -90,14 +90,51 @@ body.dark-mode .toggle-thumb {
   overflow: hidden;
 }
 
-.intro-section {
+.left-section {
   flex: 0 0 340px;
+  height: 100%;
+  position: relative;
+}
+
+.intro-section,
+.project-detail-section {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
   height: 100%;
   overflow-y: auto;
   scrollbar-width: none;
   padding-bottom: 40px;
+  transition: opacity 0.4s ease, transform 0.4s ease;
 }
-.intro-section::-webkit-scrollbar {
+
+.intro-section {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(0);
+}
+
+.intro-section.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-20px);
+}
+
+.project-detail-section {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(20px);
+}
+
+.project-detail-section.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(0);
+}
+
+.intro-section::-webkit-scrollbar,
+.project-detail-section::-webkit-scrollbar {
   display: none;
 }
 
@@ -154,6 +191,34 @@ h1 {
   background-color: var(--pill-border);
 }
 
+.project-specs {
+  display: flex;
+  flex-direction: column;
+  margin-top: 8px;
+  margin-bottom: 32px;
+}
+
+.spec-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--pill-border);
+  font-size: 14px;
+}
+.spec-row:first-child {
+  border-top: 1px solid var(--pill-border);
+}
+
+.spec-key {
+  color: var(--text-secondary);
+}
+
+.spec-val {
+  color: var(--text-primary);
+  text-align: right;
+  max-width: 60%;
+}
+
 .current-work {
   font-size: 15px;
   color: var(--text-secondary);
@@ -185,9 +250,98 @@ h1 {
   flex: 1;
   min-width: 0;
   height: 100%;
+  position: relative;
+}
+
+.overview-mode,
+.details-mode {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.overview-mode {
   display: flex;
   flex-direction: column;
   gap: 24px;
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.overview-mode.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-20px);
+}
+
+.details-mode {
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(20px);
+}
+
+.details-mode.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.scroll-container {
+  flex-grow: 1;
+  overflow-y: auto;
+  scrollbar-width: none;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.scroll-container::-webkit-scrollbar {
+  display: none;
+}
+
+.placeholder-img {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background-color: var(--preview-bg);
+  border-radius: 20px;
+  flex-shrink: 0;
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--text-primary);
+  z-index: 10;
+  animation: bounce 2s infinite ease-in-out;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+.scroll-indicator svg {
+  width: 20px;
+  height: 20px;
+}
+
+.scroll-indicator.hidden {
+  opacity: 0;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translate(-50%, 0);
+  }
+  50% {
+    transform: translate(-50%, 8px);
+  }
 }
 
 .project-preview {
@@ -198,7 +352,8 @@ h1 {
   opacity: 0;
   transition: opacity 0.3s ease, transform 0.3s ease;
   transform: scale(0.98);
-  pointer-events: none;
+  pointer-events: auto;
+  cursor: pointer;
 }
 
 .project-preview.visible {
@@ -274,8 +429,9 @@ h1 {
 .footer {
   display: flex;
   justify-content: space-between;
-  padding-top: 40px;
-  margin-top: 60px;
+  width: 340px;
+  padding-bottom: 40px;
+  margin-top: auto;
   font-size: 13px;
   color: #999;
 }
@@ -285,7 +441,7 @@ h1 {
 /* Tablet and Laptop */
 @media (max-width: 1024px) {
   .page-wrapper {
-    padding: 30px 40px;
+    padding: 30px 40px 0 40px;
   }
 
   .top-nav {
@@ -299,6 +455,10 @@ h1 {
   .intro-section {
     flex: 0 0 280px;
   }
+  
+  .footer {
+    width: 280px;
+  }
 }
 
 /* Mobile */
@@ -311,7 +471,7 @@ h1 {
   .page-wrapper {
     height: auto;
     max-height: none;
-    padding: 24px 24px;
+    padding: 24px;
   }
 
   .top-nav {
@@ -324,10 +484,21 @@ h1 {
     gap: 40px;
   }
 
-  .intro-section {
+  .left-section {
     flex: auto;
     width: 100%;
+  }
+  
+  .intro-section,
+  .project-detail-section {
+    position: relative;
+    height: auto;
+    width: 100%;
     padding-top: 0;
+  }
+  
+  .project-detail-section {
+    position: absolute; /* Keep it absolute so it overwrites on mobile too */
   }
 
   h1 {
@@ -358,6 +529,8 @@ h1 {
     align-items: center;
     text-align: center;
     margin-top: 80px;
+    width: 100%;
+    padding-bottom: 24px;
   }
 }
 

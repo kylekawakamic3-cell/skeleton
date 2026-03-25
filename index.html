@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kyle Kawakami - Portfolio</title>
-    <link rel="stylesheet" href="index.css?v=15">
+    <link rel="stylesheet" href="index.css?v=34">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -27,12 +27,14 @@
         </header>
 
         <main class="content-wrapper">
-            <section class="intro-section">
+            <div class="left-section">
+                <section class="intro-section" id="intro-section">
                 <!-- Using user's updated information while matching the new layout text styling -->
                 <h1>Hey, I'm Kyle -<br>Product Designer.</h1>
                 <p class="bio">
-                    Based in the San Francisco Bay Area, specializing in Enterprise AI IDE Platform features and Supply
-                    Chain applications. Building trust and transparency into AI-powered tools for complex workflows.
+                    Based in the San Francisco Bay Area, specializing in Enterprise AI applications. Previously on
+                    C3.AI's Agentic IDE Platform and lead designer of their Supply Chain applications. Building trust
+                    and transparency into AI-powered tools for complex workflows.
                 </p>
                 <div class="action-buttons">
                     <a href="#" class="btn btn-primary">About Me</a>
@@ -74,27 +76,46 @@
                 </div>
             </section>
 
-            <section class="right-section">
+            <section class="project-detail-section" id="project-detail-section">
+                <button class="btn btn-ghost" id="back-button" style="margin-bottom: 32px; padding: 6px 16px;">&larr; Back</button>
+                <h1 id="detail-title">Project Name</h1>
+                <p class="bio" id="detail-desc">Detailed project description goes here.</p>
+                <div class="project-specs" id="project-specs"></div>
+            </section>
+        </div>
+
+        <section class="right-section">
+            <div class="overview-mode" id="overview-mode">
                 <div class="project-preview" id="project-preview"></div>
 
                 <nav class="projects-nav">
-                    <a href="#" class="project-pill"><span>HereAfter</span></a>
-                    <a href="#" class="project-pill"><span>Maybern</span></a>
-                    <a href="#" class="project-pill"><span>Parker</span></a>
-                    <a href="#" class="project-pill"><span>Caravan</span></a>
-                    <a href="#" class="project-pill"><span>Vault</span></a>
+                    <a href="#" class="project-pill"><span>C3 Code</span></a>
+                    <a href="#" class="project-pill"><span>AI Agent Workbench</span></a>
+                    <a href="#" class="project-pill"><span>MCP Server & Client</span></a>
+                    <a href="#" class="project-pill"><span>AMD Demand Forecasting</span></a>
+                    <a href="#" class="project-pill"><span>Automating Parachute Packing</span></a>
                 </nav>
-            </section>
+            </div>
+            
+            <div class="details-mode" id="details-mode">
+                <div class="scroll-container" id="scroll-container">
+                    <div class="placeholder-img"></div>
+                    <div class="placeholder-img"></div>
+                    <div class="placeholder-img"></div>
+                    <div class="placeholder-img"></div>
+                    <div class="placeholder-img"></div>
+                </div>
+            </div>
+        </section>
         </main>
 
         <footer class="footer">
-            <div class="footer-left">Made with love by Cursor ♡</div>
+            <div class="footer-left">Made with love by Kyle ♡</div>
             <div class="footer-right">© Kyle Kawakami 2026</div>
         </footer>
     </div>
 
-    <!-- Empty script file as projects are now static links -->
-    <script src="index.js?v=15"></script>
+    <script src="index.js?v=34"></script>
 </body>
 
 </html>
