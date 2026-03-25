@@ -4,17 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kyle Kawakami - Portfolio</title>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="index.css?v=15">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="dark-mode">
     <div class="page-wrapper">
         <header class="top-nav">
             <!-- Spark icon from reference -->
             <svg class="spark-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 0C12 6.62742 17.3726 12 24 12C17.3726 12 12 17.3726 12 24C12 17.3726 6.62742 12 0 12C6.62742 12 12 6.62742 12 0Z" fill="#111111"/>
+                <path d="M12 0C12 6.62742 17.3726 12 24 12C17.3726 12 12 17.3726 12 24C12 17.3726 6.62742 12 0 12C6.62742 12 12 6.62742 12 0Z" fill="currentColor"/>
             </svg>
             <div class="theme-toggle">
                 <div class="toggle-thumb"></div>
@@ -28,6 +28,10 @@
                 <p class="bio">
                     Based in the San Francisco Bay Area, specializing in Enterprise AI IDE Platform features and Supply Chain applications. Building trust and transparency into AI-powered tools for complex workflows.
                 </p>
+                <div class="action-buttons">
+                    <a href="#" class="btn btn-primary">About Me</a>
+                    <a href="#" class="btn btn-ghost">Resume</a>
+                </div>
                 <div class="current-work">
                     Building cool stuff with <a href="#">C3. AI<span class="arrow">→</span></a>
                 </div>
@@ -45,13 +49,17 @@
                 </div>
             </section>
 
-            <nav class="projects-nav">
-                <a href="#" class="project-pill">HereAfter</a>
-                <a href="#" class="project-pill">Maybern</a>
-                <a href="#" class="project-pill">Parker</a>
-                <a href="#" class="project-pill">Caravan</a>
-                <a href="#" class="project-pill">Vault</a>
-            </nav>
+            <section class="right-section">
+                <div class="project-preview" id="project-preview"></div>
+
+                <nav class="projects-nav">
+                    <a href="#" class="project-pill"><span>HereAfter</span></a>
+                    <a href="#" class="project-pill"><span>Maybern</span></a>
+                    <a href="#" class="project-pill"><span>Parker</span></a>
+                    <a href="#" class="project-pill"><span>Caravan</span></a>
+                    <a href="#" class="project-pill"><span>Vault</span></a>
+                </nav>
+            </section>
         </main>
 
         <footer class="footer">
@@ -61,6 +69,6 @@
     </div>
     
     <!-- Empty script file as projects are now static links -->
-    <script src="index.js"></script>
+    <script src="index.js?v=15"></script>
 </body>
 </html>
