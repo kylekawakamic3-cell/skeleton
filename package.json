@@ -1,0 +1,19 @@
+{
+  "name": "skeleton-portfolio",
+  "version": "1.0.0",
+  "description": "Premium portfolio skeleton with CI/CD",
+  "main": "index.js",
+  "scripts": {
+    "lint:html": "htmlhint index.html",
+    "lint:css": "stylelint index.css",
+    "lint:js": "eslint index.js",
+    "lint": "npm run lint:html && npm run lint:css && npm run lint:js",
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "devDependencies": {
+    "eslint": "^9.0.0",
+    "htmlhint": "^1.1.4",
+    "stylelint": "^16.0.0",
+    "stylelint-config-standard": "^36.0.0"
+  }
+}

@@ -72,7 +72,7 @@ body.dark-mode .theme-toggle {
   height: 22px;
   background-color: #FFFFFF;
   border-radius: 50%;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateX(20px);
 }
@@ -103,10 +103,17 @@ body.dark-mode .toggle-thumb {
   left: 0;
   width: 100%;
   height: 100%;
-  overflow-y: auto;
   scrollbar-width: none;
   padding-bottom: 40px;
   transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.intro-section {
+  overflow-y: auto;
+}
+
+.project-detail-section {
+  overflow-y: hidden;
 }
 
 .intro-section {
@@ -177,6 +184,7 @@ h1 {
   color: var(--bg-color);
   border: 1px solid var(--text-primary);
 }
+
 .btn-primary:hover {
   opacity: 0.85;
   transform: translateY(-1px);
@@ -187,6 +195,7 @@ h1 {
   color: var(--text-primary);
   border: 1px solid var(--pill-border);
 }
+
 .btn-ghost:hover {
   background-color: var(--pill-border);
 }
@@ -205,6 +214,7 @@ h1 {
   border-bottom: 1px solid var(--pill-border);
   font-size: 14px;
 }
+
 .spec-row:first-child {
   border-top: 1px solid var(--pill-border);
 }
@@ -300,6 +310,7 @@ h1 {
   flex-direction: column;
   gap: 24px;
 }
+
 .scroll-container::-webkit-scrollbar {
   display: none;
 }
@@ -326,6 +337,7 @@ h1 {
   transition: opacity 0.3s ease;
   pointer-events: none;
 }
+
 .scroll-indicator svg {
   width: 20px;
   height: 20px;
@@ -336,9 +348,12 @@ h1 {
 }
 
 @keyframes bounce {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translate(-50%, 0);
   }
+
   50% {
     transform: translate(-50%, 8px);
   }
@@ -408,8 +423,13 @@ h1 {
 }
 
 @keyframes fillProgress {
-  0% { width: 0%; }
-  100% { width: 100%; }
+  0% {
+    width: 0%;
+  }
+
+  100% {
+    width: 100%;
+  }
 }
 
 .project-pill:hover::before,
@@ -455,7 +475,7 @@ h1 {
   .intro-section {
     flex: 0 0 280px;
   }
-  
+
   .footer {
     width: 280px;
   }
@@ -488,7 +508,7 @@ h1 {
     flex: auto;
     width: 100%;
   }
-  
+
   .intro-section,
   .project-detail-section {
     position: relative;
@@ -496,9 +516,10 @@ h1 {
     width: 100%;
     padding-top: 0;
   }
-  
+
   .project-detail-section {
-    position: absolute; /* Keep it absolute so it overwrites on mobile too */
+    position: absolute;
+    /* Keep it absolute so it overwrites on mobile too */
   }
 
   h1 {
@@ -533,4 +554,3 @@ h1 {
     padding-bottom: 24px;
   }
 }
-

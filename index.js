@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const pills = document.querySelectorAll('.project-pill');
     const previewBox = document.getElementById('project-preview');
-    
+
     // UI Elements for detail swapped
     const introSection = document.getElementById('intro-section');
     const detailSection = document.getElementById('project-detail-section');
@@ -21,28 +21,28 @@ document.addEventListener('DOMContentLoaded', () => {
     const scrollContainer = document.getElementById('scroll-container');
 
     const projectsData = [
-        { 
-            title: "C3 Code", 
-            desc: "Full redesign of the core platform experience centered around an agentic, \"vibe-coding\" framework. I replaced manual, multi-step workflows with natural language interaction. This transformation effectively decentralized app deployment, enabling a single business user to achieve in 10 minutes what previously required a dedicated engineering team and a half-year roadmap.",
+        {
+            title: "C3 Code",
+            desc: "Full redesign of the core platform experience centered around an agentic, \"vibe-coding\" framework. This transformation decentralized app deployment, enabling a single business user to achieve in 10 minutes what previously required a dedicated engineering team and a 6 month roadmap.",
             specs: { "Client": "C3.AI", "Solution": "Agentic App builder", "Contribution": "End-to-End redesign", "Year": "2025", "Scope": "1 year" }
         },
-        { 
-            title: "AI Agent Workbench", 
+        {
+            title: "AI Agent Workbench",
             desc: "Led the responsive redesign of the primary dashboard interface to accelerate AI agent workflow deployments.",
             specs: { "Client": "C3.AI", "Solution": "AI Agent Workbench & Monitoring", "Contribution": "Workbench, Monitoring, Gallery", "Year": "2025", "Scope": "3 months" }
         },
-        { 
-            title: "MCP Server & Client", 
+        {
+            title: "MCP Server & Client",
             desc: "Designed intuitive consumer-facing application interfaces focusing on data clarity and performance.",
             specs: { "Client": "C3.AI", "Solution": "MCP Server & Client UI", "Contribution": "Lead Product Designer", "Year": "2025", "Scope": "2 months" }
         },
-        { 
-            title: "AMD Demand Forecasting", 
+        {
+            title: "AMD Demand Forecasting",
             desc: "Designed holistic overview components mapping internal logistical hardware consumption patterns and workflows.",
             specs: { "Client": "AMD", "Solution": "Demand Forecasting Base App", "Contribution": "Edit Forecast", "Year": "2025", "Scope": "2 months" }
         },
-        { 
-            title: "Automating Parachute Packing", 
+        {
+            title: "Automating Parachute Packing",
             desc: "Established a cohesive design system uniting mobile and web platforms to track scalable logistics.",
             specs: { "Client": "U.S. Army", "Solution": "Dashboard & Equipment Redesign", "Contribution": "Lead Product Designer", "Year": "2024", "Scope": "8 months" }
         }
@@ -63,16 +63,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 p.classList.remove('timer-active');
                 p.classList.remove('manual-active');
             });
-            
+
             pills[index].classList.add('active');
-            
+
             if (manual) {
                 pills[index].classList.add('manual-active');
             } else {
                 void pills[index].offsetWidth;
                 pills[index].classList.add('timer-active');
             }
-            
+
             previewBox.innerHTML = `
                 <div style="display:flex; align-items:center; justify-content:center; height:100%; color:#888; font-size: 24px; font-weight: 500;">
                     Previewing: ${pills[index].textContent.trim()}
@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (timer) clearInterval(timer);
             if (isDetailMode) return;
             showProject(currentIndex, false);
-            
+
             timer = setInterval(() => {
                 if (!isHovered && !isDetailMode) {
                     currentIndex = (currentIndex + 1) % pills.length;
@@ -98,10 +98,10 @@ document.addEventListener('DOMContentLoaded', () => {
             if (timer) clearInterval(timer);
             detailTitle.textContent = projectsData[index].title;
             detailDesc.textContent = projectsData[index].desc;
-            
+
             // Reset scrolling tracking
             if (scrollContainer) scrollContainer.scrollTop = 0;
-            
+
             const specs = projectsData[index].specs;
             let specsHTML = '';
             for (const [key, value] of Object.entries(specs)) {
@@ -113,8 +113,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 `;
             }
             document.getElementById('project-specs').innerHTML = specsHTML;
-            
-            
+
+
             // Highlight the exact pill clicked statically
             pills.forEach(p => {
                 p.classList.remove('active', 'timer-active', 'manual-active');
@@ -163,7 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
             pill.addEventListener('mouseleave', () => {
                 if (isDetailMode) return;
                 isHovered = false;
-                startTimer(); 
+                startTimer();
             });
         });
     }
