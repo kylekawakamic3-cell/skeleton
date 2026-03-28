@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+shoudocument.addEventListener('DOMContentLoaded', () => {
     // Basic interaction for the theme toggle can go here if needed
     const themeToggle = document.querySelector('.theme-toggle');
     if (themeToggle) {
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             title: "C3 Code",
             desc: "Full redesign of the core platform experience centered around an agentic, \"vibe-coding\" framework. This transformation decentralized app deployment, enabling a single business user to achieve in 10 minutes what previously required a dedicated engineering team and a 6 month roadmap.",
-            specs: { "Client": "C3.AI", "Solution": "Agentic App builder", "Contribution": "End-to-End redesign", "Year": "2025", "Scope": "1 year" }
+            specs: { "Client": "C3.AI", "Solution": "Agentic AI App Builder", "Contribution": "End-to-End redesign", "Year": "2025", "Scope": "1 year" }
         },
         {
             title: "AI Agent Workbench",
