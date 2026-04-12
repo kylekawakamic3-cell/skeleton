@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (image) {
                 previewBox.innerHTML = `
                     <div class="preview-image-container" style="width:100%; height:100%; overflow:hidden; border-radius:20px;">
-                        <img src="${image}" alt="${projectsData[index].title}" style="width:100%; height:100%; object-fit:cover;">
+                        <img src="${image}" alt="${projectsData[index].title}" class="preview-image">
                     </div>
                 `;
             } else {
@@ -148,11 +148,10 @@ document.addEventListener('DOMContentLoaded', () => {
             });
             pills[index].classList.add('active', 'manual-active');
 
-            const image = projectsData[index].images[0];
             if (image) {
                 previewBox.innerHTML = `
                     <div class="preview-image-container" style="width:100%; height:100%; overflow:hidden; border-radius:20px;">
-                        <img src="${image}" alt="${pills[index].textContent.trim()}" style="width:100%; height:100%; object-fit:cover;">
+                        <img src="${image}" alt="${pills[index].textContent.trim()}" class="preview-image">
                     </div>
                 `;
             } else {
