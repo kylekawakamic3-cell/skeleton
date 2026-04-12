@@ -37,13 +37,13 @@ document.addEventListener('DOMContentLoaded', () => {
             title: "MCP Server & Client",
             desc: "Designed intuitive consumer-facing application interfaces focusing on data clarity and performance.",
             specs: { "Client": "C3.AI", "Solution": "MCP Server & Client UI", "Contribution": "Lead Product Designer", "Year": "2025", "Scope": "2 months" },
-            images: []
+            images: ["assets/mcp-server-1.png"]
         },
         {
             title: "AMD Demand Forecasting",
             desc: "Designed holistic overview components mapping internal logistical hardware consumption patterns and workflows.",
             specs: { "Client": "AMD", "Solution": "Demand Forecasting Base App", "Contribution": "Edit Forecast", "Year": "2025", "Scope": "2 months" },
-            images: []
+            images: ["assets/demand-forecasting-1.png"]
         },
         {
             title: "Automating Parachute Packing",
