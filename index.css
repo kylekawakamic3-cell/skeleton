@@ -280,6 +280,9 @@ h1 {
   opacity: 1;
   pointer-events: auto;
   transform: translateY(0);
+  min-height: 0;
+  /* Allow flex children to shrink */
+  overflow: hidden;
 }
 
 .overview-mode.hidden {
@@ -361,7 +364,9 @@ h1 {
 
 .project-preview {
   width: 100%;
-  flex-grow: 1;
+  flex: 1 1 0;
+  min-height: 0;
+  /* Critical: allows flex item to shrink below content size */
   background-color: var(--preview-bg);
   border-radius: 20px;
   opacity: 0;
@@ -369,6 +374,7 @@ h1 {
   transform: scale(0.98);
   pointer-events: auto;
   cursor: pointer;
+  overflow: hidden;
 }
 
 .project-preview.visible {
@@ -401,6 +407,8 @@ h1 {
   justify-content: flex-start;
   align-items: center;
   padding-bottom: 40px;
+  flex-shrink: 0;
+  /* Never let pills get squished or pushed off */
 }
 
 .project-pill {
