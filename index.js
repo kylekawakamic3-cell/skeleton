@@ -25,7 +25,8 @@ document.addEventListener('DOMContentLoaded', () => {
             title: "C3 Code",
             desc: "Full redesign of the core platform experience centered around an agentic, \"vibe-coding\" framework. This transformation decentralized app deployment, enabling a single business user to achieve in 10 minutes what previously required a dedicated engineering team and a 6 month roadmap.",
             specs: { "Client": "C3.AI", "Solution": "Agentic AI App Builder", "Contribution": "End-to-End Redesign", "Year": "2025", "Scope": "1 year" },
-            images: ["assets/c3-code-1-transparent.png"]
+            images: ["assets/c3-code-1-transparent.png"],
+            video: "assets/c3-code-recording.mov"
         },
         {
             title: "AI Agent Workbench",
@@ -88,8 +89,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 pills[index].classList.add('timer-active');
             }
 
+            const video = projectsData[index].video;
             const image = projectsData[index].images[0];
-            if (image) {
+            if (video) {
+                previewBox.innerHTML = `
+                    <div class="preview-image-container" style="width:100%; height:100%; overflow:hidden; border-radius:20px;">
+                        <video src="${video}" class="preview-image" autoplay loop muted playsinline></video>
+                    </div>
+                `;
+            } else if (image) {
                 previewBox.innerHTML = `
                     <div class="preview-image-container" style="width:100%; height:100%; overflow:hidden; border-radius:20px;">
                         <img src="${image}" alt="${projectsData[index].title}" class="preview-image">
@@ -158,10 +166,18 @@ document.addEventListener('DOMContentLoaded', () => {
             });
             pills[index].classList.add('active', 'manual-active');
 
-            if (image) {
+            const detailVideo = projectsData[index].video;
+            const detailImage = projectsData[index].images[0];
+            if (detailVideo) {
                 previewBox.innerHTML = `
                     <div class="preview-image-container" style="width:100%; height:100%; overflow:hidden; border-radius:20px;">
-                        <img src="${image}" alt="${pills[index].textContent.trim()}" class="preview-image">
+                        <video src="${detailVideo}" class="preview-image" autoplay loop muted playsinline></video>
+                    </div>
+                `;
+            } else if (detailImage) {
+                previewBox.innerHTML = `
+                    <div class="preview-image-container" style="width:100%; height:100%; overflow:hidden; border-radius:20px;">
+                        <img src="${detailImage}" alt="${pills[index].textContent.trim()}" class="preview-image">
                     </div>
                 `;
             } else {
