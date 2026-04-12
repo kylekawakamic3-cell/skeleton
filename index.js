@@ -1,4 +1,4 @@
-shoudocument.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
     // Basic interaction for the theme toggle can go here if needed
     const themeToggle = document.querySelector('.theme-toggle');
     if (themeToggle) {
