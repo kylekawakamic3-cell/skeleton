@@ -4,7 +4,7 @@
   --text-secondary: #71717a;
   --pill-bg: #FFFFFF;
   --pill-border: #e0e0dc;
-  --preview-bg: #e2e2dd;
+  --preview-bg: #EDF4FF;
   --timer-bg: #d1d1cd;
 }
 
@@ -387,6 +387,7 @@ h1 {
   height: 100%;
   object-fit: contain;
   object-position: center center;
+  padding: 24px 16px;
   transition: transform 0.5s ease;
   transform: scale(1);
 }
