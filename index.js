@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
             title: "AI Agent Workbench",
             desc: "Led the responsive redesign of the primary dashboard interface to accelerate AI agent workflow deployments.",
             specs: { "Client": "C3.AI", "Solution": "AI Agent Workbench & Monitoring", "Contribution": "Workbench, Monitoring, Gallery", "Year": "2025", "Scope": "3 months" },
-            images: []
+            images: ["assets/ai-agent-workbench-1.png"]
         },
         {
             title: "MCP Server & Client",
