@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
             images: ["assets/mcp-server-1.png"]
         },
         {
-            title: "AMD Demand Forecasting",
+            title: "Demand Forecasting",
             desc: "Designed holistic overview components mapping internal logistical hardware consumption patterns and workflows.",
             specs: { "Client": "AMD", "Solution": "Demand Forecasting Base App", "Contribution": "Edit Forecast", "Year": "2025", "Scope": "2 months" },
             images: ["assets/demand-forecasting-1.png"]
