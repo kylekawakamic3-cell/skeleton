@@ -53,6 +53,16 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     ];
 
+    // Preload all project images so they display instantly on hover
+    projectsData.forEach(project => {
+        if (project.images && project.images.length > 0) {
+            project.images.forEach(src => {
+                const img = new Image();
+                img.src = src;
+            });
+        }
+    });
+
     if (previewBox && pills.length > 0) {
         let currentIndex = 0;
         let timer = null;
