@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
             desc: "Full redesign of the core platform experience centered around an agentic, \"vibe-coding\" framework. This transformation decentralized app deployment, enabling a single business user to achieve in 10 minutes what previously required a dedicated engineering team and a 6 month roadmap.",
             specs: { "Client": "C3.AI", "Solution": "Agentic AI App Builder", "Contribution": "End-to-End Redesign", "Year": "2025", "Scope": "1 year" },
             images: ["assets/c3-code-1-transparent.png"],
-            video: "assets/c3-code-recording.mov"
+            video: "assets/c3-code-recording.mov#t=5"
         },
         {
             title: "AI Agent Workbench",
@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const image = projectsData[index].images[0];
             if (video) {
                 previewBox.innerHTML = `
-                    <div class="preview-image-container" style="width:100%; height:100%; overflow:hidden; border-radius:20px;">
+                    <div class="preview-image-container" style="width:100%; height:100%; overflow:hidden; border-radius:2px; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);">
                         <video src="${video}" class="preview-image" autoplay loop muted playsinline></video>
                     </div>
                 `;
@@ -170,7 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const detailImage = projectsData[index].images[0];
             if (detailVideo) {
                 previewBox.innerHTML = `
-                    <div class="preview-image-container" style="width:100%; height:100%; overflow:hidden; border-radius:20px;">
+                    <div class="preview-image-container" style="width:100%; height:100%; overflow:hidden; border-radius:2px; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);">
                         <video src="${detailVideo}" class="preview-image" autoplay loop muted playsinline></video>
                     </div>
                 `;
