@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
             desc: "Full redesign of the core platform experience centered around an agentic, \"vibe-coding\" framework. This transformation decentralized app deployment, enabling a single business user to achieve in 10 minutes what previously required a dedicated engineering team and a 6 month roadmap.",
             specs: { "Client": "C3.AI", "Solution": "Agentic AI App Builder", "Contribution": "End-to-End Redesign", "Year": "2025", "Scope": "1 year" },
             images: ["assets/c3-code-1-transparent.png"],
-            video: "assets/c3-code-recording.mov#t=5"
+            video: "assets/c3-code-recording.mov#t=10"
         },
         {
             title: "AI Agent Workbench",
