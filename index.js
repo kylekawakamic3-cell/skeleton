@@ -7,10 +7,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    const pills = document.querySelectorAll('.project-pill');
-    const previewBox = document.getElementById('project-preview');
-
-    // UI Elements for detail swapped
     const introSection = document.getElementById('intro-section');
     const detailSection = document.getElementById('project-detail-section');
     const detailTitle = document.getElementById('detail-title');
@@ -20,13 +16,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const detailsMode = document.getElementById('details-mode');
     const scrollContainer = document.getElementById('scroll-container');
 
+
     const projectsData = [
         {
             title: "C3 Code",
             desc: "Full redesign of the core platform experience centered around an agentic, \"vibe-coding\" framework. This transformation decentralized app deployment, enabling a single business user to achieve in 10 minutes what previously required a dedicated engineering team and a 6 month roadmap.",
             specs: { "Client": "C3.AI", "Solution": "Agentic AI App Builder", "Contribution": "End-to-End Redesign", "Year": "2025", "Scope": "1 year" },
             images: ["assets/c3-code-1-transparent.png"],
-            video: "assets/c3-code-recording.mov#t=10"
+            video: "assets/c3-code-recording.mov#t=2"
         },
         {
             title: "AI Agent Workbench",
@@ -64,169 +61,77 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    if (previewBox && pills.length > 0) {
-        let currentIndex = 0;
-        let timer = null;
-        let isHovered = false;
-        let isDetailMode = false;
+    const projectsList = document.getElementById('projects-list');
 
-        previewBox.classList.add('visible');
+    const openDetails = (index) => {
+        detailTitle.textContent = projectsData[index].title;
+        detailDesc.textContent = projectsData[index].desc;
 
-        const showProject = (index, manual = false) => {
-            if (isDetailMode) return;
-            pills.forEach(p => {
-                p.classList.remove('active');
-                p.classList.remove('timer-active');
-                p.classList.remove('manual-active');
-            });
+        if (scrollContainer) scrollContainer.scrollTop = 0;
 
-            pills[index].classList.add('active');
+        const specs = projectsData[index].specs;
+        let specsHTML = '';
+        for (const [key, value] of Object.entries(specs)) {
+            specsHTML += `
+                <div class="spec-row">
+                    <span class="spec-key">${key}</span>
+                    <span class="spec-val">${value}</span>
+                </div>
+            `;
+        }
+        document.getElementById('project-specs').innerHTML = specsHTML;
 
-            if (manual) {
-                pills[index].classList.add('manual-active');
-            } else {
-                void pills[index].offsetWidth;
-                pills[index].classList.add('timer-active');
-            }
-
-            const video = projectsData[index].video;
-            const image = projectsData[index].images[0];
-            if (video) {
-                previewBox.innerHTML = `
-                    <div class="preview-image-container" style="width:100%; height:100%; overflow:hidden; border-radius:2px; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);">
-                        <video src="${video}" class="preview-image" autoplay loop muted playsinline></video>
-                    </div>
-                `;
-            } else if (image) {
-                previewBox.innerHTML = `
-                    <div class="preview-image-container" style="width:100%; height:100%; overflow:hidden; border-radius:20px;">
-                        <img src="${image}" alt="${projectsData[index].title}" class="preview-image">
-                    </div>
-                `;
-            } else {
-                previewBox.innerHTML = `
-                    <div style="display:flex; align-items:center; justify-content:center; height:100%; color:#888; font-size: 24px; font-weight: 500;">
-                        Previewing: ${pills[index].textContent.trim()}
-                    </div>
-                `;
-            }
-        };
-
-        const startTimer = () => {
-            if (timer) clearInterval(timer);
-            if (isDetailMode) return;
-            showProject(currentIndex, false);
-
-            timer = setInterval(() => {
-                if (!isHovered && !isDetailMode) {
-                    currentIndex = (currentIndex + 1) % pills.length;
-                    showProject(currentIndex, false);
-                }
-            }, 5000);
-        };
-
-        const openDetails = (index) => {
-            isDetailMode = true;
-            if (timer) clearInterval(timer);
-            detailTitle.textContent = projectsData[index].title;
-            detailDesc.textContent = projectsData[index].desc;
-
-            // Reset scrolling tracking
-            if (scrollContainer) scrollContainer.scrollTop = 0;
-
-            const specs = projectsData[index].specs;
-            let specsHTML = '';
-            for (const [key, value] of Object.entries(specs)) {
-                specsHTML += `
-                    <div class="spec-row">
-                        <span class="spec-key">${key}</span>
-                        <span class="spec-val">${value}</span>
-                    </div>
-                `;
-            }
-            document.getElementById('project-specs').innerHTML = specsHTML;
-
-            // Fill Detail Mode images
-            if (scrollContainer) {
-                const images = projectsData[index].images;
-                if (images && images.length > 0) {
-                    scrollContainer.innerHTML = images.map(src => `
-                        <div class="detail-image-container" style="width:100%; border-radius:20px; overflow:hidden; margin-bottom:24px;">
-                            <img src="${src}" alt="${projectsData[index].title}" style="width:100%; height:auto; display:block;">
+        if (scrollContainer) {
+            const images = projectsData[index].images;
+            const placeholders = Array(3).fill('<div class="detail-image-card"></div>').join('');
+            if (images && images.length > 0) {
+                scrollContainer.innerHTML = images.map(src => `
+                    <div class="detail-image-card">
+                        <div class="preview-image-container" style="width:100%; height:100%; overflow:hidden; border-radius:20px;">
+                            <img src="${src}" alt="${projectsData[index].title}" class="preview-image">
                         </div>
-                    `).join('');
-                } else {
-                    scrollContainer.innerHTML = Array(5).fill('<div class="placeholder-img"></div>').join('');
-                }
-            }
-
-            // Highlight the exact pill clicked statically
-            pills.forEach(p => {
-                p.classList.remove('active', 'timer-active', 'manual-active');
-            });
-            pills[index].classList.add('active', 'manual-active');
-
-            const detailVideo = projectsData[index].video;
-            const detailImage = projectsData[index].images[0];
-            if (detailVideo) {
-                previewBox.innerHTML = `
-                    <div class="preview-image-container" style="width:100%; height:100%; overflow:hidden; border-radius:2px; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);">
-                        <video src="${detailVideo}" class="preview-image" autoplay loop muted playsinline></video>
                     </div>
-                `;
-            } else if (detailImage) {
-                previewBox.innerHTML = `
-                    <div class="preview-image-container" style="width:100%; height:100%; overflow:hidden; border-radius:20px;">
-                        <img src="${detailImage}" alt="${pills[index].textContent.trim()}" class="preview-image">
-                    </div>
-                `;
+                `).join('') + placeholders;
             } else {
-                previewBox.innerHTML = `
-                    <div style="display:flex; align-items:center; justify-content:center; height:100%; color:#888; font-size: 24px; font-weight: 500;">
-                        Previewing: ${pills[index].textContent.trim()}
-                    </div>
-                `;
+                scrollContainer.innerHTML = placeholders;
             }
+        }
 
-            introSection.classList.add('hidden');
-            detailSection.classList.add('visible');
-            overviewMode.classList.add('hidden');
-            detailsMode.classList.add('visible');
-        };
+        introSection.classList.add('hidden');
+        detailSection.classList.add('visible');
+        overviewMode.classList.add('hidden');
+        detailsMode.classList.add('visible');
+    };
 
-        const closeDetails = () => {
-            isDetailMode = false;
-            introSection.classList.remove('hidden');
-            detailSection.classList.remove('visible');
-            overviewMode.classList.remove('hidden');
-            detailsMode.classList.remove('visible');
-            startTimer();
-        };
+    const closeDetails = () => {
+        introSection.classList.remove('hidden');
+        detailSection.classList.remove('visible');
+        overviewMode.classList.remove('hidden');
+        detailsMode.classList.remove('visible');
+    };
 
-        if (backBtn) backBtn.addEventListener('click', closeDetails);
-        previewBox.addEventListener('click', () => openDetails(currentIndex));
+    if (backBtn) backBtn.addEventListener('click', closeDetails);
 
-        showProject(currentIndex, false);
-        startTimer();
+    if (projectsList) {
+        projectsList.innerHTML = projectsData.map((p, i) => {
+            let mediaHTML;
+            if (p.video) {
+                mediaHTML = `<video src="${p.video}" class="card-media" autoplay loop muted playsinline></video>`;
+            } else if (p.images && p.images.length > 0) {
+                mediaHTML = `<img src="${p.images[0]}" alt="${p.title}" class="card-media">`;
+            } else {
+                mediaHTML = `<div class="card-media card-placeholder"></div>`;
+            }
+            return `
+                <div class="project-card" data-index="${i}">
+                    <div class="card-media-wrap">${mediaHTML}</div>
+                    <div class="card-meta"><span class="card-title">${p.title}</span> · ${p.specs.Client} · ${p.specs.Contribution}</div>
+                </div>
+            `;
+        }).join('');
 
-        pills.forEach((pill, index) => {
-            pill.addEventListener('click', (e) => {
-                e.preventDefault();
-                currentIndex = index;
-                openDetails(currentIndex);
-            });
-            pill.addEventListener('mouseenter', () => {
-                if (isDetailMode) return;
-                isHovered = true;
-                currentIndex = index;
-                if (timer) clearInterval(timer);
-                showProject(currentIndex, true);
-            });
-            pill.addEventListener('mouseleave', () => {
-                if (isDetailMode) return;
-                isHovered = false;
-                startTimer();
-            });
+        projectsList.querySelectorAll('.project-card').forEach(card => {
+            card.addEventListener('click', () => openDetails(parseInt(card.dataset.index)));
         });
     }
 });
