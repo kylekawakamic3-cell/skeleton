@@ -45,9 +45,30 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 40px 40px 0;
+  padding: 40px 40px 40px;
   background-color: var(--bg-color);
   z-index: 100;
+}
+
+/* Gradient fade so cards dissolve into the bg as they scroll under the header.
+   Constrained to the card column so it never overlaps the left panel text. */
+.top-nav::after {
+  content: '';
+  position: absolute;
+  left: 440px;
+  right: 40px;
+  top: 100%;
+  height: 40px;
+  background: linear-gradient(to bottom,
+    rgba(var(--bg-color-rgb), 1) 0%,
+    rgba(var(--bg-color-rgb), 0) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.top-nav.scrolled::after {
+  opacity: 1;
 }
 
 .theme-toggle {
@@ -86,7 +107,7 @@ body.dark-mode .toggle-thumb {
   /* 40px left edge + 340px left panel + 60px gap */
   padding-right: 40px;
   padding-top: 108px;
-  /* 40px top + 28px nav + 40px gap below nav */
+  /* nav padding handles spacing below header */
 }
 
 .left-section {
@@ -360,7 +381,7 @@ h1 {
 
 .card-media-wrap {
   width: 100%;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 7 / 5;
   border-radius: 16px;
   overflow: hidden;
   margin-bottom: 12px;
@@ -374,7 +395,7 @@ h1 {
 .card-media {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
   display: block;
   border-radius: 8px;
   transition: transform 0.4s ease;
@@ -399,6 +420,82 @@ h1 {
   color: var(--text-primary);
 }
 
+/* About page — Experience & Education
+   Reuses the same divider lines + secondary text as the details page. */
+.about-content {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+  padding-bottom: 40px;
+}
+
+/* Placeholder profile banner — full-width rectangle */
+.about-avatar {
+  width: 100%;
+  aspect-ratio: 5 / 2;
+  border-radius: 16px;
+  background-color: var(--preview-bg);
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.about-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.about-heading {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+
+.about-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 24px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--pill-border);
+}
+
+.about-row:first-of-type {
+  border-top: 1px solid var(--pill-border);
+}
+
+.about-row-main {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.about-row-title {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.about-row-note {
+  font-weight: 400;
+  color: var(--text-secondary);
+}
+
+.about-row-sub {
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.about-row-meta {
+  font-size: 14px;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  text-align: right;
+}
+
 /* Footer */
 .footer {
   position: fixed;
@@ -419,6 +516,11 @@ h1 {
 @media (max-width: 1024px) {
   .top-nav {
     padding: 32px 32px 0;
+  }
+
+  .top-nav::after {
+    left: 348px;
+    right: 32px;
   }
 
   .content-wrapper {
@@ -455,6 +557,10 @@ h1 {
     position: static;
     padding: 24px 24px 0;
     margin-bottom: 32px;
+  }
+
+  .top-nav::after {
+    display: none;
   }
 
   .content-wrapper {

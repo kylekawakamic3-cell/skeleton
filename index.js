@@ -1,4 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Scroll indicator shadow on header
+    const topNav = document.querySelector('.top-nav');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 0) {
+            topNav.classList.add('scrolled');
+        } else {
+            topNav.classList.remove('scrolled');
+        }
+    });
+
     // Basic interaction for the theme toggle can go here if needed
     const themeToggle = document.querySelector('.theme-toggle');
     if (themeToggle) {
