@@ -55,10 +55,10 @@ body {
 .top-nav::after {
   content: '';
   position: absolute;
-  left: 440px;
+  left: calc(100px + (100vw - 140px) * 0.3);
   right: 40px;
   top: 100%;
-  height: 40px;
+  height: 30px;
   background: linear-gradient(to bottom,
     rgba(var(--bg-color-rgb), 1) 0%,
     rgba(var(--bg-color-rgb), 0) 100%);
@@ -103,8 +103,8 @@ body.dark-mode .toggle-thumb {
 
 /* Main Content */
 .content-wrapper {
-  padding-left: 440px;
-  /* 40px left edge + 340px left panel + 60px gap */
+  padding-left: calc(100px + (100vw - 140px) * 0.3);
+  /* 40px left edge + 30% left panel + 60px gap */
   padding-right: 40px;
   padding-top: 108px;
   /* nav padding handles spacing below header */
@@ -114,7 +114,7 @@ body.dark-mode .toggle-thumb {
   position: fixed;
   top: 108px;
   left: 40px;
-  width: 340px;
+  width: calc((100vw - 140px) * 0.3);
   height: calc(100vh - 108px);
 }
 
@@ -318,11 +318,17 @@ h1 {
 
 .detail-image-card {
   width: 100%;
-  aspect-ratio: 16 / 9;
   flex-shrink: 0;
   background-color: var(--preview-bg);
   border-radius: 20px;
   overflow: hidden;
+  padding: 40px;
+}
+
+/* Empty placeholder cards keep a fixed ratio; image cards grow to fit the design */
+.detail-image-card:empty {
+  aspect-ratio: 16 / 9;
+  padding: 0;
 }
 
 .scroll-indicator {
@@ -363,8 +369,9 @@ h1 {
 
 .preview-image {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  display: block;
+  border-radius: 8px;
 }
 
 /* Project Cards */
@@ -386,7 +393,7 @@ h1 {
   overflow: hidden;
   margin-bottom: 12px;
   background-color: var(--preview-bg);
-  padding: 20px;
+  padding: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -503,7 +510,7 @@ h1 {
   left: 40px;
   display: flex;
   justify-content: space-between;
-  width: 340px;
+  width: calc((100vw - 140px) * 0.3);
   padding-bottom: 40px;
   font-size: 13px;
   color: #999;
@@ -642,7 +649,7 @@ h1 {
   }
 
   .card-media-wrap {
-    padding: 12px;
+    padding: 24px;
     border-radius: 12px;
   }
 

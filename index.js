@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
             title: "C3 Code",
             desc: "Full redesign of the core platform experience centered around an agentic, \"vibe-coding\" framework. This transformation decentralized app deployment, enabling a single business user to achieve in 10 minutes what previously required a dedicated engineering team and a 6 month roadmap.",
             specs: { "Client": "C3.AI", "Solution": "Agentic AI App Builder", "Contribution": "End-to-End Redesign", "Year": "2025", "Scope": "1 year" },
-            images: ["assets/c3-code-1-transparent.png"],
+            images: ["assets/c3-code-3.png", "assets/c3-code-1.png", "assets/c3-code-empty.png", "assets/c3-code-2.png"],
             video: "assets/c3-code-recording.mov#t=2"
         },
         {
@@ -93,17 +93,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (scrollContainer) {
             const images = projectsData[index].images;
-            const placeholders = Array(3).fill('<div class="detail-image-card"></div>').join('');
             if (images && images.length > 0) {
                 scrollContainer.innerHTML = images.map(src => `
                     <div class="detail-image-card">
-                        <div class="preview-image-container" style="width:100%; height:100%; overflow:hidden; border-radius:20px;">
-                            <img src="${src}" alt="${projectsData[index].title}" class="preview-image">
-                        </div>
+                        <img src="${src}" alt="${projectsData[index].title}" class="preview-image">
                     </div>
-                `).join('') + placeholders;
+                `).join('');
             } else {
-                scrollContainer.innerHTML = placeholders;
+                scrollContainer.innerHTML = '';
             }
         }
 
